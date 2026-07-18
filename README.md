@@ -13,6 +13,7 @@
 - ⚡ **Vite 高效開發：** 利用 Vite 的極速熱更新（HMR），優化前端構建效能。
 - 📱 **響應式設計 (RWD)：** 使用 Tailwind CSS 純手工打造，完美適配手機、平板與桌機。
 - ⌨️ **UX 體驗優化：** 支援 `Enter` 鍵快速送出、輸入防呆機制（自動過濾空白字元），以及直覺的狀態切換動效。
+- 📂 **路徑別名優化 (Path Alias)：** 於 Vite 中配置 `@/` 絕對路徑別名指向 `src/` 目錄，告別傳統相對路徑（`../../`）的混亂引入，大幅提升程式碼的可讀性與專案重構的彈性。
 
 ## 🛠️ 技術棧 (Tech Stack)
 
@@ -26,5 +27,5 @@
   - `useCallback`: 記憶化 `handleCancelEdit` 函式，防止其因父元件 Re-render 而重新建立，並安全地作為 `useEffect` 的依賴項，避免引發無限渲染循環。
   - `useRef`: 用於綁定編輯中的 DOM 節點，實作精準的 **Click Outside（點擊外部偵測）** 互動邏輯。
 - **Build Tool:** Vite
-- **Data Fetching:** ky (HTTP client，模組化配置 prefixUrl 與 credentials)
+- **Data Fetching:** ky (HTTP client，透過 `prefix: '/api'` 實作前後端反向代理與環境解耦，確保跨來源 Cookie 認證安全順暢)
 - **Styling / UI:** Tailwind CSS + Shadcn UI (FieldGroup, Toast)
