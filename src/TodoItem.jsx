@@ -80,12 +80,12 @@ export default function TodoItem({ todoItem, onChange, onDeleteTodo }) {
         />
       </div>
       <div
-        className={`flex-1 gap-2 flex justify-between items-center ${todoItem.completed ? 'opacity-50' : ''}`}
+        className={`md:flex-1 gap-2 flex justify-between items-center${todoItem.completed ? 'opacity-50' : ''}`}
       >
         <div className="flex justify-between items-center gap-2" ref={inputRef}>
           <input
             type="text"
-            className={`pr-15 ${todoItem.completed ? 'line-through' : ''}`}
+            className={` ${todoItem.completed ? 'line-through' : ''}`}
             value={newTitle}
             disabled={todoItem.completed}
             onChange={(e) => {
@@ -99,7 +99,7 @@ export default function TodoItem({ todoItem, onChange, onDeleteTodo }) {
             }}
           />
           {isEdit ? (
-            <div className="flex justify-between items-center gap-2 cursor-pointer text-xl">
+            <div className="flex justify-between items-center gap-2 cursor-pointer text-xl md:flex-row flex-col">
               <FaRegCircleCheck
                 className="text-green-600"
                 onClick={() => {
@@ -116,11 +116,11 @@ export default function TodoItem({ todoItem, onChange, onDeleteTodo }) {
           )}
         </div>
 
-        <p className="text-gray-700 text-sm">
+        <p className="text-gray-700 text-sm hidden md:inline-block">
           {todoItem.createdAt ? createdTime : '載入中...'}
         </p>
       </div>
-      <div className="flex items-center justify-center opacity-0 group-hover:opacity-100 active:scale-90 transition-transform duration-150">
+      <div className="flex items-center justify-center md:opacity-0 md:group-hover:opacity-100 active:scale-90 transition-transform duration-150">
         <button
           type="button"
           className="cursor-pointer"
