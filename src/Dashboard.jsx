@@ -6,7 +6,7 @@ import { TODO_ITEM_FILTER } from './constants';
 import { todoService } from './api';
 import TodoTitle from './TodoTitle';
 
-export default function Dashboard() {
+export default function Dashboard({ userInfo }) {
   const [todoList, setTodoList] = useState([]);
   const [activeFilter, setActiveFilter] = useState(TODO_ITEM_FILTER.ALL);
   const [isLoading, setIsLoading] = useState(false);
@@ -104,6 +104,10 @@ export default function Dashboard() {
   }, []);
   return (
     <>
+      {userInfo && (
+        <p className="text-sm text-gray-500">歡迎 {userInfo.email}</p>
+      )}
+
       <TodoTitle />
       <section className="flex flex-col items-center gap-3 py-5">
         <TodoInput onAddTodo={addNewTodo} isLoading={isLoading} />

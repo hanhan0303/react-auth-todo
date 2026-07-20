@@ -7,6 +7,7 @@ import { authService } from './api';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [userInfo, setUserInfo] = useState('');
 
   const handleLoginSuccess = () => {
     setIsLoggedIn(true);
@@ -15,7 +16,8 @@ function App() {
   useEffect(() => {
     const checkLoginStatus = async () => {
       try {
-        await authService.check();
+        const res = await authService.check();
+        setUserInfo(res);
         setIsLoggedIn(true);
       } catch (err) {
         console.log('沒有token', err);
@@ -35,7 +37,7 @@ function App() {
       <Toaster />
       <div className="max-w-screen-lg mx-auto py-5 px-3 text-lg">
         {isLoggedIn ? (
-          <Dashboard />
+          <Dashboard userInfo={userInfo} />
         ) : (
           <AuthModal onLoginSuccess={handleLoginSuccess} />
         )}
